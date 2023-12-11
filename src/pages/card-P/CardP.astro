@@ -1,0 +1,17 @@
+---
+interface Props {
+	title: string;
+	
+	href: string;
+}
+
+const { href, title, } = Astro.props;
+---
+<li class="flex h-14 text-lg pl-4 bg-white text-black hover:text-white [&>div]:hover:text-white  hover:bg-gradient-to-r  hover:from-indigo-500 from-10% hover:via-sky-500 via-30% hover:to-emerald-500 hover:to-90% rounded-2xl overflow-hidden">
+    <a href={href} class="h-full flex items-center w-full  ">
+        {title}
+    </a>
+    <div class="h-full flex items-center pr-4 pl-4 bg-gradient-to-r from-cyan-500 to-blue-500 ">
+        {">"}
+    </div>
+</li>

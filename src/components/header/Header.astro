@@ -1,0 +1,39 @@
+---
+import Logo from './Logo.astro'
+import Search from '../search/Search.astro';
+import Card from '../car/Card.astro';
+---
+<header class="w-full h-20 flex flex-col justify-center pl-4 pr-4">
+    <main class="flex relative justify-center">
+        <section class="w-[100%] max-w-[90px] flex justify-center  text-white items-center font-bold h-auto absolute left-0 z-[-1] ">
+            <div class="flex min-w-[30px]">
+                <Logo/>
+            </div>
+            <div id="code" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 text-3xl h-auto">
+                VPI      
+            </div>
+        </section>
+        
+        <Search/>
+        <div class="w-auto flex gap-2 absolute right-0 z-[0] ">
+            <Card href='/Iniciar-Secion' title='Iniciar Sesión'/> 
+            <Card href='/Mis-Compras' title='Mis Compras'/>
+            <Card href='/Like' title='Me gustan'/>
+            <Card href='/Carrito' title='Carrito'/> 
+        </div> 
+    </main>
+    
+</header>
+<style>
+    #code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>
