@@ -1,24 +1,19 @@
 ---
-
+import Products from '../components/products/Products.astro'
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/car/Card.astro';
-import CardP from './card-P/CardP.astro';
-import {productos} from './card-P/productos.js'
+
 ---
 
 <Layout title="Ventas">
-	<main class="flex w-full h-full text-white p-4">
-		<ul class="flex flex-col w-full max-w-[350px] gap-2">
-			
-				{productos.map((product, index)=>(
-					<li class="">
-						<CardP href={product.producto} title={product.producto}/>
-					</li>
-				))}
-			
-		</ul>	
-	</main>
+	<Products/>
 </Layout>
 
-
-./card-P/productos.js
+<style>
+	#main section ul::-webkit-scrollbar{
+		width: 4px;
+	}
+	#main section ul::-webkit-scrollbar-thumb{
+		background-color: #112b3c;
+		border-radius: 20px;
+	}
+</style>
