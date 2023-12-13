@@ -2,8 +2,11 @@
 import Logo from './Logo.astro'
 import Search from '../search/Search.astro';
 import Card from '../car/Card.astro';
+
 ---
-<header class="w-full h-20 flex flex-col justify-center pl-4 pr-4 bg-gradient-to-r from-cyan-500 to-blue-500 ">
+<header 
+class="w-full h-20 flex flex-col justify-center pl-4 pr-4 bg-gradient-to-r from-cyan-500 to-blue-500 "
+>
     <main class="flex relative justify-between gap-4">
         <section class="w-[100%] max-w-[168px] flex justify-center  text-white items-center font-bold h-auto ">
             <div class="flex min-w-[56px]">
@@ -13,7 +16,10 @@ import Card from '../car/Card.astro';
                 VPI      
             </div>
         </section>
-        <section  class="flex h-14 bg-transparent hover:bg-[#facc15] rounded-3xl [&>a>p]:hover:text-[#112b3c] cursor-pointer ">
+        <section  
+        class="flex h-14 bg-transparent hover:bg-[#facc15] rounded-3xl [&>a>p]:hover:text-[#112b3c] cursor-pointer"
+        id=""
+        >
             <a   class="text-xl flex justify-center items-center text-white h-full pr-4 pl-4 rounded-3xl hover:outline-none outline outline-1 hover:text-[#112b3c] gap-2" >
                 <p> Categorias</p>  <p class="rotate-90 text-3xl text-center text-white opacity-70">{">"}</p> 
             </a>
@@ -25,8 +31,7 @@ import Card from '../car/Card.astro';
             <Card href='/Like' title='Me gustan'/>
             <Card href='/Carrito' title='Carrito'/> 
         </div> 
-    </main>
-    
+    </main>    
 </header>
 <style>
     #code {

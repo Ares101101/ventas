@@ -11,34 +11,44 @@ const categoriasUnicas = data.reduce((categorias, producto) => {
   return categorias;
 }, []);
 ---
-<main class="flex w-full h-full text-white relative bg-blue-50" id="main">
-    <section class="flex h-[540px] w-[100%]">
-        <ul class="flex-col w-full max-w-[350px]  overflow-x-auto pl-4 pb-4 pr-4">
-        
-            {productos.map((product, index)=>(
-                <li class="pb-4	 ">
-                    <CardP href={product.producto} title={product.producto}/>
-                </li>
-            ))}
-        
-        </ul>
-        <article class="flex flex-col text-[#112b3c] w-full ">
-            <div class="flex flex-col h-full w-full justify-around ">
-                {categoriasUnicas.map((producto)=>(
-                    <article class="flex flex-col items-center  w-full h-20 cursor-pointer">
-                        <div class="p-4 h-full justify-center flex items-center">
-                            {producto}
-                        </div>
-                    </article>
-                    ))	
-                }
-            </div>				
-            <div>
-
-            </div>
-        </article>	
-    </section>
-    <div class="w-full flex h-[1px] bg-gradient-to-r from-cyan-500 to-blue-500 absolute bottom-0 ">
-
-    </div>
-</main>
+<section  id="main" class="absolute top-0 z-10 w-full">
+    <main class="flex w-full h-full text-white relative bg-blue-50">
+        <section class="flex h-[540px] w-[100%]">
+            <ul class="flex-col w-full max-w-[350px]  overflow-x-auto pl-4 pb-4 pr-4">
+            
+                {productos.map((product, index)=>(
+                    <li class="pb-4">
+                        <CardP href={product.producto} title={product.producto}/>
+                    </li>
+                ))}
+            
+            </ul>
+            <article class="flex flex-col text-[#112b3c] w-full ">
+                <div class="flex flex-col h-full w-full justify-around ">
+                    {categoriasUnicas.map((producto)=>(
+                        <article class="flex flex-col items-center  w-full h-20 cursor-pointer">
+                            <div class="p-4 h-full justify-center flex items-center">
+                                {producto}
+                            </div>
+                        </article>
+                        ))	
+                    }
+                </div>				
+                <div>
+    
+                </div>
+            </article>	
+        </section>
+        <div class="w-full flex h-[1px] bg-gradient-to-r from-cyan-500 to-blue-500 absolute bottom-0 ">
+        </div>
+    </main>
+</section>
+<style>
+	#main section ul::-webkit-scrollbar{
+		width: 5px;
+	}
+	#main section ul::-webkit-scrollbar-thumb{
+		background-color: #112b3c;
+		border-radius: 20px;
+	}
+</style>
