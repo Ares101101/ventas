@@ -11,7 +11,7 @@ const categoriasUnicas = data.reduce((categorias, producto) => {
   return categorias;
 }, []);
 ---
-<section  id="main" class="absolute top-0 z-10 w-full">
+<section id="dialog" style="display: none" id="main" class="absolute top-0 z-10 w-full" transition:name="astro-categorias" >
     <main class="flex w-full h-full text-white relative bg-blue-50">
         <section class="flex h-[540px] w-[100%]">
             <ul class="flex-col w-full max-w-[350px]  overflow-x-auto pl-4 pb-4 pr-4">
@@ -43,12 +43,27 @@ const categoriasUnicas = data.reduce((categorias, producto) => {
         </div>
     </main>
 </section>
+<script>
+    import { isOpen } from '../header/store.js';
+  
+    // Listen to changes in the store, and show/hide the dialog accordingly
+    isOpen.subscribe(()=> {
+      if (isOpen.value== true) {
+        document.getElementById('dialog').style.display = 'block';
+      } else {
+        document.getElementById('dialog').style.display = 'none';
+        document.querySelector('dialog').classList.add('oculto');
+      }
+    })
+    
+  </script>
 <style>
-	#main section ul::-webkit-scrollbar{
+	#dialog main section ul::-webkit-scrollbar{
 		width: 5px;
 	}
-	#main section ul::-webkit-scrollbar-thumb{
+	#dialog main section ul::-webkit-scrollbar-thumb{
 		background-color: #112b3c;
 		border-radius: 20px;
 	}
+   
 </style>
