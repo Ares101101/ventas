@@ -11,7 +11,7 @@ const categoriasUnicas = data.reduce((categorias, producto) => {
   return categorias;
 }, []);
 ---
-<section id="dialog" style="display: none" id="main" class="absolute top-0 z-10 w-full" transition:name="astro-categorias" >
+<section id="dialog" style="display: none" class="absolute top-0 z-[1] w-full " >
     <main class="flex w-full h-full text-white relative bg-blue-50">
         <section class="flex h-[540px] w-[100%]">
             <ul class="flex-col w-full max-w-[350px]  overflow-x-auto pl-4 pb-4 pr-4">
@@ -44,19 +44,28 @@ const categoriasUnicas = data.reduce((categorias, producto) => {
     </main>
 </section>
 <script>
-    import { isOpen } from '../header/store.js';
+import { isOpen } from '../header/store.js';
   
     // Listen to changes in the store, and show/hide the dialog accordingly
-    isOpen.subscribe(()=> {
-      if (isOpen.value== true) {
-        document.getElementById('dialog').style.display = 'block';
-      } else {
-        document.getElementById('dialog').style.display = 'none';
-        document.querySelector('dialog').classList.add('oculto');
-      }
-    })
+    const pro = document.getElementById('dialog');
+    isOpen.subscribe(() => {
     
-  </script>
+    if (isOpen.value == true) {
+      pro.removeEventListener('animationend', handleTransitionEnd);
+      pro.classList.remove('productos-style-close');
+      pro.style.display = 'block';
+      pro.classList.toggle('productos-style');
+    } else if (isOpen.value == false) {
+      pro.classList.remove('productos-style');
+      pro.classList.toggle('productos-style-close');
+      pro.addEventListener('animationend', handleTransitionEnd )
+    }
+  });
+
+  function handleTransitionEnd() {
+      pro.style.display = 'none';
+  }
+</script>
 <style>
 	#dialog main section ul::-webkit-scrollbar{
 		width: 5px;
@@ -65,5 +74,38 @@ const categoriasUnicas = data.reduce((categorias, producto) => {
 		background-color: #112b3c;
 		border-radius: 20px;
 	}
+  .productos-style{
+    animation: appearAnimation 0.4s ease-in-out;
+    
+}
+
+@keyframes appearAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-300px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+.productos-style-close{
+    animation: closeAnimation 0.4s ease-in-out;
    
+}
+
+@keyframes closeAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-500px);
+        
+    }
+    
+}
+
 </style>

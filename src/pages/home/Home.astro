@@ -1,0 +1,50 @@
+---
+const url = 'https://amazon-price1.p.rapidapi.com/search?keywords=%3CREQUIRED%3E&marketplace=ES';
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+    'X-RapidAPI-Host': 'amazon-price1.p.rapidapi.com'
+  }
+};
+let data = []
+try {
+  const response = await fetch(url, options);
+  const result = await response.text();
+  const parsedResult = JSON.parse(result);
+  data = parsedResult
+  console.log(data); // o haz algo más con parsedResult
+} catch (error) {
+  console.error(error);
+}
+---
+<section class="flex flex-col w-full p-4">
+  <article class="flex justify-between w-full flex-wrap h-auto gap-4  ">
+    {data.map((producto)=>(
+      <article class="bg-[#112b3c] p-4 flex flex-col justify-center items-center rounded-2xl w-full max-w-[330px] " >
+        <picture class="max-w-[300px] w-full flex    h-auto sm:max-h-[333px]  sm:h-full">
+          <img src={producto} class='w-full h-auto  rounded-2xl '/>
+        </picture>
+        <section class="flex flex-col text-base p-4 w-full text-white" id="code">
+          <span >
+            ${producto.price}
+          </span> 
+          <span class="truncate ">  
+            {producto}
+          </span>
+          <div>
+            {producto.rating}
+          </div>
+        </section>
+      </article>
+      ))
+    }
+  </article>
+</section>
+
+<style>
+  #code {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
+  }
+
+</style>
